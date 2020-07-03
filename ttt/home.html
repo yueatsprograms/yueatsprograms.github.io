@@ -164,6 +164,10 @@
       &nbsp; 
       [<a href="https://arxiv.org/abs/1909.13231">paper</a>]
       &nbsp; 
+      [<a href="slides.pdf">slides</a>]
+      &nbsp; 
+      [<a href="bibtex.txt">BibTeX</a>]
+      &nbsp; 
       [<a href="https://github.com/yueatsprograms/ttt_cifar_release">code part 1</a>]
       &nbsp; 
       [<a href="https://github.com/yueatsprograms/ttt_imagenet_release">code part 2</a>]
@@ -201,6 +205,7 @@
     <div class="img" style="text-align:center">
       <img src="method.png" style="margin:0.2em;max-width:100%">
     </div>
+    <div class="gap-20"></div>
     <p>
     We use self-supervision to create label from unlabeled input. The form of self-supervision used here is rotation prediction <a href="https://arxiv.org/abs/1803.07728">(Gidaris et al. 2018)</a>, which rotates an input image by multiples of 90<span>&#176;</span>, and asks a model to solve the four-way classification problem. 
     Our model has both a self-supervised head \( \theta_s \) and a main task head \( \theta_m \), on top of a shared feature extractor \( \theta_e \). 
@@ -210,7 +215,8 @@
     At test time, we cannot see the main task label, but we can still optimize the self-supervised loss over the single test input drawn from \(Q\) (grayed out because this expectation can be noisy). This produces \(\theta(x)\), which we then use to make a prediction on \(x\).
     </p>
 
-    <img src="version.png" style="margin:0em;max-width:100%">
+    <div class="gap-10"></div>
+    <img src="versions.png" style="margin:0em;max-width:100%">
     <div class="gap-20"></div>
 
     <p>
@@ -219,6 +225,33 @@
     </p>
     <hr>
 
+    <div class="gap-10"></div>
+    <b><span style="font-size:25px">Results</span></b><br>
+    <div class="gap-20"></div>
+
+    <img src="histograms.png" style="margin:0em;max-width:100%">
+    <div class="gap-20"></div>
+    <p>
+    We experiment on CIFAR-10-C
+    <a href="https://arxiv.org/abs/1903.12261"> (Hendrycks et al. 2019)</a>,
+    a standard object recognition benchmark that evaluates generalization across 15 types of corruptions.
+    Test-Time Training (TTT) standard version makes significant improvements over the two baselines without hurting on the original distribution. The online version makes even more improvements. 
+    </p>
+
+    <div class="gap-10"></div>
+    <img src="curves.png" style="margin:0em;max-width:100%">
+    <div class="gap-20"></div>
+    <p>
+    We plot the accuracy of the online version as it progresses through test sets in ImageNet-C, the counterpart of CIFAR-10-C for ImageNet.
+    Online TTT generalizes better as more samples are evaluated (x-axis), without hurting on the original distribution.
+    </p>
+
+    <p> 
+    For more results on more benchmarks, please take a look at our full
+    <a href="https://arxiv.org/abs/1909.13231">paper</a>.
+    </p>
+
+    <hr>
     <div class="gap-10"></div>
     <b><span style="font-size:25px">Discussion</span></b><br>
     <div class="gap-10"></div>

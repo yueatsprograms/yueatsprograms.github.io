@@ -1,0 +1,7 @@
+@inproceedings{sun19ttt,
+  Author = {Sun, Yu and Wang, Xiaolong and Zhuang, Liu and
+  	Miller, John and Hardt, Moritz and Efros, Alexei A.},
+  Title = {Test-Time Training with Self-Supervision for Generalization under Distribution Shifts},
+  Booktitle = {ICML},
+  Year = {2020}
+}
