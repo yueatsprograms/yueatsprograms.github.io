@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Test-Time Training Project Website </title>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
     
     <link href="../lib/css/bootstrap.min.css" rel="stylesheet">
 
@@ -53,7 +58,7 @@
     </span></center>
     <div class="gap-20"></div>
 
-    <!--------------------- Author Names --------------------->
+    <!---------------------  authors --------------------->
     <span style="font-size:20px">
           &nbsp;
           <div style="display:inline-block">
@@ -134,7 +139,7 @@
       <div class="col-md-3"></div>
     </div>
  -->
-    <!--------------------- AFFILIATIONS --------------------->
+    <!--------------------- affiliations --------------------->
     <div class="gap-5"></div>
     <div class="row">
       <div class="col-md-3"></div>
@@ -150,10 +155,12 @@
       </div>
       <div class="col-md-3"></div>
     </div>
-
     <hr>
+
+    <!--------------------- links --------------------->
     <div class="gap-10"></div>
-    <span style="font-size:20px"> ICML 2020
+    <span style="font-size:20px"> 
+      <b>ICML 2020</b>
       &nbsp; 
       [<a href="https://arxiv.org/abs/1909.13231">paper</a>]
       &nbsp; 
@@ -164,12 +171,6 @@
     <div class="gap-10"></div>
     <hr>
 
-    <!--------------------- teaser --------------------->
-    <!-- <div class="gap-5"></div>
-    <div class="img" style="text-align:center">
-      <img src="./figs/tfig1.png" style="margin:0.2em;max-width:95%">
-    </div> -->
-
     <!--------------------- abstract --------------------->
     <div class="gap-10"></div>
     <b><span style="font-size:25px">Abstract</span></b><br>
@@ -178,6 +179,44 @@
     In this paper, we propose Test-Time Training, a general approach for improving the performance of predictive models when training and test data come from different distributions. We turn a single unlabeled test sample into a self-supervised learning problem, on which we update the model parameters before making a prediction. This also extends naturally to data in an online stream. Our simple approach leads to improvements on diverse image classification benchmarks aimed at evaluating robustness to distribution shifts.
     </p>
 
+    <hr>
+
+    <!--------------------- content --------------------->
+    <div class="gap-10"></div>
+    <b><span style="font-size:25px">Introduction</span></b><br>
+    <div class="gap-10"></div>
+    <div class="gap-5"></div>
+    <div class="img" style="text-align:center">
+      <img src="teaser.png" style="margin:0.2em;max-width:70%">
+    </div>
+    <div class="gap-10"></div>
+    <p> 
+    Given model parameters \(\theta\) and a loss function \(\ell\), the standard test error is evaluated as the expected loss on a test distribution \(Q\).
+    Test-Time Training modifies the expected loss and allows \(\theta\) to depend on the test input \(x\), without looking at the label \(y\).
+    </p>
+    <hr>
+
+    <div class="gap-10"></div>
+    <b><span style="font-size:25px">Method</span></b><br>
+    <div class="img" style="text-align:center">
+      <img src="method.png" style="margin:0.2em;max-width:100%">
+    </div>
+    <p>
+    We use self-supervision to create label from unlabeled input. The form of self-supervision used here is rotation prediction <a href="https://arxiv.org/abs/1803.07728">(Gidaris et al. 2018)</a>, which rotates an input image by multiples of 90<span>&#176;</span>, and asks a model to solve the four-way classification problem. 
+    Our model has both a self-supervised head \( \theta_s \) and a main task head \( \theta_m \), on top of a shared feature extractor \( \theta_e \). 
+    </p>
+    <p>
+    At training time, we jointly optimize the self-supervised loss \( \ell_s \) and the main task loss \( \ell_m \) over the training distribution \(P\), where the main task label \(y\) is available.
+    At test time, we cannot see the main task label, but we can still optimize the self-supervised loss over the single test input drawn from \(Q\) (grayed out because this expectation can be noisy). This produces \(\theta(x)\), which we then use to make a prediction on \(x\).
+    </p>
+
+    <img src="version.png" style="margin:0em;max-width:100%">
+    <div class="gap-20"></div>
+
+    <p>
+    If samples arrive in an online stream, the online version of our method keeps the state of the parameters across samples. While the standard version follows the standard setting of supervised learning,
+    the online version makes the additional assumption that samples are produced by the same or smoothly changing distribution shifts.
+    </p>
     <hr>
 
     <div class="gap-10"></div>
