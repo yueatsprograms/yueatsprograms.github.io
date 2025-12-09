@@ -12,19 +12,10 @@
 <h1>Yu Sun</h1>
 <p>Email: ys646 [at] stanford.edu</p>
 
-<!-- <p>
-I'm looking for full-time junior collaborators. Experience in LLM infrastructure (especially with RL) would be a plus. Please reach out if you are interested. I usually reply in 12 hours. 
-</p> -->
-
-<p>
-My research focuses on an algorithmic framework called test-time training.
-Its core idea is that each test instance defines its own learning problem.
-This is usually realized by training a different model on-the-fly for each test instance using self-supervision.
-</p>
-
 <p>
 I'm a postdoc at Stanford University, hosted by Carlos Guestrin, Tatsu Hashimoto, and Sanmi Koyejo.
 I'm also a researcher at NVIDIA under Yejin Choi.
+My research focuses on continual learning, specifically a conceptual framework called test-time training, where each test instance defines its own learning problem.
 I completed my PhD in 2023 at UC Berkeley, advised by Alyosha Efros and Moritz Hardt. 
 My PhD thesis is 
 <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2023/EECS-2023-86.html
@@ -32,12 +23,38 @@ My PhD thesis is
 During my undergrad at Cornell University, I worked with Kilian Weinberger.
 </p>
 
+<h3>My Research</h3>
+
+Humans are able to continuously learn throughout their lives. 
+But most of today's AI systems remain static after deployment, even though the world keeps changing. 
+The high-level goal of my research is to enable AI systems to continuously learn like humans.
+
+Specifically, human continual learning stands out in two important aspects.
+First, each person has a unique brain that learns within the context of their individual life.
+This personalized form of continual learning is quite different from, for example, a chatbot model that is fine-tuned hourly using the latest information available worldwide.
+While such a model does change over time, it is still the same at any given moment for every user and every problem instance.
+% or a recommender system that is updated constantly using responses to the advertisements it has displayed.
+
+Second, most human learning happens without a boundary between training and testing.
+Consider your commute to work this morning. It is both ``testing'' because you did care about getting to work this very morning, and ``training'' because you were also gaining experience for future commutes.
+But in machine learning, the train-test split has always been a fundamental concept, often taught in the first lecture of an introductory course as:
+``Do not train on the test set!'' 
+
+I believe that these two special aspects of human learning are intimately connected and should be studied together in the field of AI.
+In particular, continual learning will be most powerful when it targets the specific problem instance that we care about, conventionally known as the test instance.
+
+Guided by this belief, I have been developing a conceptual framework known as test-time training since 2019. 
+Its core idea is to make each test instance define its own learning problem.
+While this idea is extremely simple, my efforts to understand it deeply has led me to contribute to diverse areas of artificial intelligence, such as natural language processing, computer vision and robotics.
+The best way to learn more about the technical aspects of my research is to look at the selected papers below.
+
+
+<h3>Selected Papers</h3>
+
 <p>
 For a complete list of papers, please see my 
 <a href="https://scholar.google.com/citations?user=a7drwRMAAAAJ&hl=en&oi=ao">Google Scholar</a>.
 </p>
-
-<h3>Selected Papers</h3>
 
 <p>
 * indicates equal contribution.
@@ -51,12 +68,12 @@ ICML 2025<br>
 [<a href="https://github.com/test-time-training/ttt-lm-pytorch">PyTorch code</a>]
 </p>
 
-<p><b>Test-Time Training on Nearest Neighbors for Large Language Models</b><br>
+<!-- <p><b>Test-Time Training on Nearest Neighbors for Large Language Models</b><br>
 Moritz Hardt, Yu Sun<br>
 ICLR 2024<br>
 [<a href="https://arxiv.org/abs/2305.18466">paper</a>]
 [<a href="https://github.com/socialfoundations/tttlm">code</a>]
-</p>
+</p> -->
 
 <p><b>Test-Time Training on Video Streams</b><br>
 Renhao Wang*, Yu Sun*, Arnuv Tandon, Yossi Gandelsman, Xinlei Chen, Alexei A. Efros, Xiaolong Wang<br>
@@ -81,7 +98,7 @@ ICML 2020<br>
 [<a href="https://youtu.be/NbuWxmMco30">talk</a>]
 </p>
 
-<h3>Older Papers</h3>
+<!-- <h3>Older Papers</h3>
 
 <p>
 * indicates alphabetical order.
@@ -106,6 +123,7 @@ ECCV 2016<br>
 Matt Kusner, Yu Sun, Nicholas Kolkin, Kilian Q. Weinberger<br>
 ICML 2015<br> 
 [<a href="https://proceedings.mlr.press/v37/kusnerb15.pdf">paper</a>]
-</p>
+</p> -->
+
 </body>
 </html>
